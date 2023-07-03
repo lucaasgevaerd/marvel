@@ -18,7 +18,7 @@ type Props = {
     stories: Story[]
 }
 
-export default function CardDetails({ character, comics, events, series, stories }: Props) {
+export default function CardDetails({ character, comics, events, series }: Props) {
     const [comicsSectionIsOpen, setComicsSectionIsOpen] = useState<boolean>(false);
     const [eventsSectionIsOpen, setEventsSectionIsOpen] = useState<boolean>(false);
     const [seriesSectionIsOpen, setSeriesSectionIsOpen] = useState<boolean>(false);

@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from "axios"
 import md5 from "md5";
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
-import { CharacterResponse } from "../../types/characterIdResponse";
 import { ComicsResponse } from "../../types/comicsResponse";
 import { EventsResponse } from "../../types/eventsResponse";
 import { SeriesResponse } from "../../types/seriesResponse";
@@ -12,10 +11,10 @@ import { Comic } from "../../types/comic";
 import { Event } from "../../types/event";
 import { Series } from "../../types/series";
 import { Story } from "../../types/story";
-import { image_variants } from "../../utils/imageVariants";
 import { MainContainer } from "../../styles/layouts/mainContainer";
 import { FlexContent } from "../../styles/layouts/flexContent";
 import CardDetails from "../../components/CardDetails";
+import { CharacterIdResponse } from "../../types/characterIdResponse";
 
 export default function CharacterDetails() {
     const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
@@ -47,7 +46,7 @@ export default function CharacterDetails() {
                     Accept: '*/*',
                 },
             })
-            .then((response: AxiosResponse<CharacterResponse>) => {
+            .then((response: AxiosResponse<CharacterIdResponse>) => {
                 setCharacter(response.data.data.results[0])
                 axios
                     .get(`${BASE_URL}/characters/${characterId}/${'comics' as PathTypes}`, {
